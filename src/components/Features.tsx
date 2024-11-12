@@ -1,24 +1,24 @@
 import React from "react";
 
-const Features: React.FC = () => {
-  const features = [
-    {
-      title: "Listen Anywhere",
-      description: "Enjoy on your phone, tablet, desktop, and more.",
-    },
-    {
-      title: "Ad-Free Music",
-      description: "No ads, just uninterrupted music.",
-    },
-    {
-      title: "Offline Playback",
-      description: "Download your favorites and listen offline.",
-    },
-  ];
+const features = [
+  {
+    title: "Song List",
+    description: "Millions of songs to choose from.",
+  },
+  {
+    title: "Song Details",
+    description: "Find all the details of your favorite songs.",
+  },
+  {
+    title: "Artist Details",
+    description: "Get to know more about your favorite artists.",
+  },
+];
 
+const Features: React.FC = () => {
   return (
     <section className="py-16 px-8 bg-black">
-      <h2 className="text-4xl font-bold text-center mb-12">Why Spotify?</h2>
+      <h2 className="text-4xl font-bold text-center mb-12">Features</h2>
       <div className="grid gap-8 md:grid-cols-3">
         {features.map((feature, index) => (
           <div
