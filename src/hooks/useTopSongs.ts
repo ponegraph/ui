@@ -16,7 +16,7 @@ const useTopSongs = () => {
     // Simulate API call
     const fetchSongs = async () => {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 10000)); // simulate network delay
       setSongs([
         {
           id: 1,

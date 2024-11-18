@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useTopSongs from "../hooks/useTopSongs";
 import SearchBar from "./SearchBar";
 import SongTable from "./SongTable";
+import PulseLoading from "./PulseLoading";
 
 const TopSongs: React.FC = () => {
   const { songs, loading } = useTopSongs();
@@ -16,7 +17,11 @@ const TopSongs: React.FC = () => {
       <h1 className="text-5xl font-bold mb-8">Top Spotify Songs</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       {loading ? (
-        <p className="text-center text-gray-400">Loading songs...</p>
+        <div className="flex flex-col">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <PulseLoading key={index} />
+          ))}
+        </div>
       ) : (
         <SongTable songs={filteredSongs} />
       )}
