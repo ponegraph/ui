@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import useTopSongs from "../hooks/useTopSongs";
-import SearchBar from "./SearchBar";
-import SongTable from "./SongTable";
 import PulseLoading from "./PulseLoading";
+import SearchBar from "./SearchBar";
+import { SongTable } from "./SongTable";
 
 const TopSongs: React.FC = () => {
   const { songs, loading } = useTopSongs();
