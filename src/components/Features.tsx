@@ -1,33 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link for routing
 
 const features = [
   {
-    title: "Song List",
-    description: "Millions of songs to choose from.",
+    title: "Songs",
+    description: "Explore millions of songs with detailed information.",
+    link: "/songs", // URL path for Songs feature
   },
   {
-    title: "Song Details",
-    description: "Find all the details of your favorite songs.",
-  },
-  {
-    title: "Artist Details",
-    description: "Get to know more about your favorite artists.",
+    title: "Artists",
+    description: "Discover profiles of your favorite artists and their works.",
+    link: "/artists", // URL path for Artists feature
   },
 ];
 
 const Features: React.FC = () => {
   return (
     <section className="py-16 px-8 bg-black">
-      <h2 className="text-4xl font-bold text-center mb-12">Features</h2>
-      <div className="grid gap-8 md:grid-cols-3">
+      {/* <h2 className="text-4xl font-bold text-center mb-12">Features</h2> */}
+      <div className="flex justify-center gap-8">
         {features.map((feature, index) => (
-          <div
+          <Link
             key={index}
+            to={feature.link} // Use Link component to navigate
             className="text-center p-6 border border-gray-800 rounded-lg hover:bg-gray-800 transition duration-300"
           >
             <h3 className="text-2xl font-semibold mb-4">{feature.title}</h3>
             <p className="text-gray-400">{feature.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
