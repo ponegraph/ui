@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-
-type FetchState<T> = {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
-};
+import { FetchState } from "../types/fetchTypes";
 
 // Caveat: This custom hook is only for GET method and doesn't handle headers, body, etc.
 export const useFetch = <T>(url: string): FetchState<T> => {
