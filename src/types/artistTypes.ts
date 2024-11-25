@@ -23,4 +23,10 @@ export type ArtistDetailResponse = {
       songs: SongUnit[];
     };
 };
+
+export type ArtistUnit = {
+  artistName: string,
+  artistId: string,
+  mbUrl: string
+}
    

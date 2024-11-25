@@ -1,16 +1,17 @@
 import React from "react";
 
 interface SearchBarProps {
+  placeholder: string;
   searchTerm: string;
   setSearchTerm: (term: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ placeholder, searchTerm, setSearchTerm }) => {
   return (
-    <div className="mb-6 flex items-center bg-gray-800 rounded-full px-4 py-2 w-full max-w-md">
+    <div className="mb-6 flex items-center bg-gray-700 rounded-full px-4 py-2 w-full max-w-md">
       <input
         type="text"
-        placeholder="Enter song name here"
+        placeholder={placeholder}
         className="bg-transparent outline-none text-gray-300 w-full px-2"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
