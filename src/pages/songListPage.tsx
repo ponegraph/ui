@@ -1,17 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import TopSongs from "../components/TopSongs";
 
 
 const SongListPage : React.FC  = () => {
   const [searchTerm, setSearchTerm] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/songs/search?query=${encodeURIComponent(searchTerm)}`); // Navigasi ke halaman pencarian
+    }
+  };
   
   return (
     <div className="bg-black text-white min-h-screen">
-      <div className="flex flex-col justify-items-center  justify-self-center">
+      <div className="flex flex-col justify-self-center">
         <h1 className="font-bold text-center">Song List</h1>
         <div className="flex justify-center">
-          <SearchBar placeholder="Enter Song Name here"  searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} onSearch={handleSearch} />
         </div>
         <TopSongs/>
         <h1>

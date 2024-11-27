@@ -14,7 +14,7 @@ const TopSongs: React.FC = () => {
 
   return (
     <div className="p-8 bg-black text-white min-h-screen">
-      <h1 className="text-5xl font-bold mb-8">Top Spotify Songs</h1>
+      <h1 className="text-4xl text-center font-bold mb-10">Top Spotify Songs</h1>
       {loading ? (
         <div className="flex flex-col">
           {Array.from({ length: 3 }).map((_, index) => (

@@ -29,4 +29,13 @@ export type ArtistUnit = {
   artistId: string,
   mbUrl: string
 }
+
+export type ArtistListResponse = {
+  code: number;
+  status: string;
+  data: {
+    artists: ArtistDetail[];
+  };
+};
+
    

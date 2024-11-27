@@ -7,16 +7,17 @@ const features = [
     description: "Explore millions of songs with detailed information.",
     link: "/songs", // URL path for Songs feature
   },
-  {
+    {
     title: "Artists",
     description: "Discover profiles of your favorite artists and their works.",
     link: "/artists", // URL path for Artists feature
   },
+
 ];
 
 const Features: React.FC = () => {
   return (
-    <section className="py-16 px-8 bg-black">
+    <section className="mt-16 py-16 px-8 bg-black">
       {/* <h2 className="text-4xl font-bold text-center mb-12">Features</h2> */}
       <div className="flex justify-center gap-8">
         {features.map((feature, index) => (

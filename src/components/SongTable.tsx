@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { SongListItem, SongUnit } from "../types/songTypes";
 import parseIsoDate from "../utils/dateFormatter";
+import TextLink from "./TextLink";
 
 
 interface SongTableProps {
@@ -22,30 +22,29 @@ const SongTable: React.FC<SongTableProps> = ({ songs }) => {
       <tbody>
         {songs.map((song, index) => (
           <tr key={index} className="hover:bg-gray-800">
-            <td className="py-2 px-4">{index}</td>
+            <td className="py-2 px-4">{index+1}</td>
             <td className="py-2 px-4">
-              <Link
-                  to={`/songs/id/${song.songId}`}
-                  className="text-blue-500 hover:underline"
-              >
-              {song.songName}
-              </Link>
+              <TextLink
+                text={song.songName} 
+                link={`/songs/id/${song.songId}`} 
+              />
             </td>
             <td className="py-2 px-4">
               {song.artists.map((artist, artistIndex) => (
-                <span key={artist.artistId}>
-                  <Link
-                    to={`/artists/id/${artist.artistId}`}
-                    className="text-blue-500 hover:underline"
-                  >
-                    {artist.artistName}
-                  </Link>
-                  {/* Menambahkan koma sebagai pemisah jika bukan artis terakhir */}
+                <span key={artist.artistId || index}>
+                  {artist.artistId ? (
+                    <TextLink
+                      text={artist.artistName} 
+                      link={`/artists/id/${artist.artistId}`} 
+                    />
+                  ) : (
+                    artist.artistName
+                  )}
                   {artistIndex < song.artists.length - 1 && ", "}
                 </span>
               ))}
             </td>
-            <td className="py-2 ">{parseIsoDate(song.releaseDate)}</td>
+            <td className="py-2 px-4">{parseIsoDate(song.releaseDate)}</td>
           </tr>
         ))}
       </tbody>
@@ -71,9 +70,14 @@ const ArtistSongTable: React.FC<ArtistSongTableProps> = ({ songs }) => {
       <tbody>
       {songs.map((song, index) => (
           <tr key={index} className="hover:bg-gray-800">
-            <td className="py-2 px-4">{index}</td>
-            <td className="py-2 px-4">{song.songName}</td>
-            <td className="py-2 ">{parseIsoDate(song.releaseDate)}</td>
+            <td className="py-2">{index+1}</td>
+            <td className="py-2">
+              <TextLink
+                text={song.songName} 
+                link={`/songs/id/${song.songId}`} 
+              />
+            </td>
+            <td className="py-2">{parseIsoDate(song.releaseDate)}</td>
           </tr>
         ))}
       </tbody>
