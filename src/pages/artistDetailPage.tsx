@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import { ArtistSongTable } from "../components/SongTable";
+import TextLink from "../components/TextLink";
 import { useArtistDetail } from "../hooks/useArtistDetail";
 
 
@@ -60,6 +61,10 @@ const ArtistDetailPage : React.FC  = () => {
                     className="object-contain w-full h-full rounded-lg"
                     src={artist.additionalInfo.imageUrl}
                     alt={`${artist.artistName} image`}
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement; 
+                      img.style.display = "none"; 
+                    }}
                   />
                 </div>
               )}
@@ -68,7 +73,7 @@ const ArtistDetailPage : React.FC  = () => {
                   <p><strong>Country:</strong> {artist.countryName}</p>
               )}
 
-              {artist.totalLastfmListeners && (
+              {artist.totalLastfmListeners !== undefined && (
                 <p>
                   <strong> 
                     <a className="hover:text-blue-400" href="https://www.last.fm/" target="_blank" rel="noopener noreferrer"> Last.FM</a> Listeners: 
@@ -76,7 +81,7 @@ const ArtistDetailPage : React.FC  = () => {
                 </p>
               )}
 
-              {artist.totalLastfmScrobbles && (
+              {artist.totalLastfmScrobbles !== undefined && (
                 <p>
                   <strong> 
                     <a className="hover:text-blue-400" href="https://www.last.fm/" target="_blank" rel="noopener noreferrer"> Last.FM</a> Scrobbles: 
@@ -90,13 +95,8 @@ const ArtistDetailPage : React.FC  = () => {
                   <strong>Tags: </strong>
                   {artist.tags.map((tag, index) => (
                     <React.Fragment key={index}>
-                      <Link
-                        to={`/search?tag=${encodeURIComponent(tag)}`}
-                        className="text-blue-400 hover:underline"
-                      >
-                        {tag}
-                      </Link>
-                      {index < artist.tags.length - 1 && ", "}
+                      <TextLink text={tag} link={`/artists/search?query=%23${encodeURIComponent(tag)}`} />
+                      {index < artist.tags.length - 1 && <span>, </span>}
                     </React.Fragment>
                   ))}
                 </p>

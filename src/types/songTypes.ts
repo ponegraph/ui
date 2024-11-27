@@ -10,7 +10,7 @@ export type SongListItem = SongUnit & {
     artists: ArtistUnit[];
 };
 
-export type TopSongResponse = {
+export type SongListResponse = {
     code: number;
     status: string;
     data: {
