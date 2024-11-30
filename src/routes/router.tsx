@@ -5,6 +5,7 @@ import ArtistListPage from "../pages/artistListPage";
 import ArtistMainPage from "../pages/artistMainPage";
 import SongDetailPage from "../pages/songDetailPage";
 import SongListPage from "../pages/songListPage";
+import SongMainPage from "../pages/songMainPage";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
     {
         path:'songs', 
         children:[
+            {path:'', element: <SongMainPage />},
             {path:'id/:songId', element: <SongDetailPage />},
             {path:'search', element: <SongListPage/>},   
         ]
