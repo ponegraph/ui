@@ -4,6 +4,7 @@ import ArtistUnit from "../components/ArtistUnit";
 import BackButton from "../components/BackButton";
 import SearchBar from "../components/SearchBar";
 import { useArtistSearch } from "../hooks/useArtistSearch";
+import ArtistListLoading from "../components/ArtistListLoading";
 
 const ArtistListPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,17 +17,32 @@ const ArtistListPage: React.FC = () => {
     setSearchTerm(queryParam || "");
   }, [searchParams]);
 
-  const { data, loading, error } = useArtistSearch(searchParams.get("query") || "");
-
-  if (loading) return <p>Loading...</p>;
-  const { artists } = data?.data || {};
-
-
   const handleSearch = () => {
     if (searchTerm.trim()) {
       navigate(`/artists/search?query=${encodeURIComponent(searchTerm)}`);
     }
   };
+
+  const { data, loading, error } = useArtistSearch(searchParams.get("query") || "");
+
+  if (loading) {
+    return <div className="bg-black text-white min-h-screen w-full">
+              <div className="flex flex-col items-center w-full p-4">
+                <div className="flex p-4 w-1/3 justify-self-center mb-4">
+                    <BackButton to={"/artists"} />
+                    <SearchBar
+                      searchTerm={searchTerm}
+                      setSearchTerm={setSearchTerm}
+                      onSearch={handleSearch}
+                    />  
+                </div>
+                <ArtistListLoading />
+              </div>
+
+            </div>
+  };
+  const { artists } = data?.data || {};
+
 
   return (
     <div className="bg-black text-white min-h-screen w-full">

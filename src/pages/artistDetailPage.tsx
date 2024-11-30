@@ -4,6 +4,7 @@ import BackButton from "../components/BackButton";
 import { ArtistSongTable } from "../components/SongTable";
 import TextLink from "../components/TextLink";
 import { useArtistDetail } from "../hooks/useArtistDetail";
+import ArtistDetailLoading from "../components/ArtistDetailLoading";
 
 
 const ArtistDetailPage : React.FC  = () => {
@@ -16,7 +17,7 @@ const ArtistDetailPage : React.FC  = () => {
 
     const { data, loading, error } = useArtistDetail(artistId);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <ArtistDetailLoading />;
     if (error) return <p>Error: {error}</p>;
     if (!data) return <p>No artist data available.</p>;
   
