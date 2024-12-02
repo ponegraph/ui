@@ -1,11 +1,17 @@
 import React from "react";
 import { useTopArtists } from "../hooks/useTopArtists";
 import ArtistUnit from "./ArtistUnit";
+import ArtistListLoading from "./ArtistListLoading";
 
 const TopArtists: React.FC = () => {
   const { data, loading, error } = useTopArtists();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return <div className="p-8 bg-black text-white min-h-screen">
+              <h1 className="text-4xl text-center font-bold mb-10">Top Popular Artists</h1>
+              <ArtistListLoading />
+            </div>
+  };
   if (error) return <p>Error: {error}</p>;
   if (!data) return <p>No top artists data available.</p>;
 

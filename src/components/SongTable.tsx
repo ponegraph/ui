@@ -10,7 +10,7 @@ interface SongTableProps {
 
 const SongTable: React.FC<SongTableProps> = ({ songs }) => {
   return (
-    <table className="w-full text-left text-gray-400">
+    <table className="w-full mx-auto text-left text-gray-400">
       <thead>
         <tr className="border-b border-gray-700">
           <th className="py-2 px-4 w-1/12">#</th>
