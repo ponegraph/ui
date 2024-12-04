@@ -8,24 +8,24 @@ import SongListPage from "../pages/songListPage";
 import SongMainPage from "../pages/songMainPage";
 
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-    },
-    {
-        path:'artists', 
-        children:[
-            {path:'', element: <ArtistMainPage />},
-            {path:'id/:artistId', element: <ArtistDetailPage />},
-            {path:'search', element: <ArtistListPage/>},   
-        ]
-    },
-    {
-        path:'songs', 
-        children:[
-            {path:'', element: <SongMainPage />},
-            {path:'id/:songId', element: <SongDetailPage />},
-            {path:'search', element: <SongListPage/>},   
-        ]
-    },
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "artists",
+    children: [
+      { path: "", element: <ArtistMainPage /> },
+      { path: "id/:artistId", element: <ArtistDetailPage /> },
+      { path: "search", element: <ArtistListPage /> },
+    ],
+  },
+  {
+    path: "songs",
+    children: [
+      { path: "", element: <SongMainPage /> },
+      { path: "id/:songId", element: <SongDetailsPage /> },
+      { path: "search", element: <SongListPage /> },
+    ],
+  },
 ]);
