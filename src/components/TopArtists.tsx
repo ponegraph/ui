@@ -19,13 +19,18 @@ const TopArtists: React.FC = () => {
 
   return (
     <div className="p-8 bg-black text-white min-h-screen">
-      <h1 className="text-4xl text-center font-bold mb-10">Top Popular Artists</h1>
+      <h1 className="text-4xl text-center font-bold mb-10">
+        Top Popular Artists
+      </h1>
       <div className="flex justify-center gap-8 w-full flex-wrap">
         {artists.map((artist, index) => (
-          <ArtistUnit key={index} artistName={artist.artistName} artistId={artist.artistId} />
+          <ArtistUnit
+            key={index}
+            artistName={artist.artistName}
+            artistId={artist.artistId}
+          />
         ))}
       </div>
-
     </div>
   );
 };

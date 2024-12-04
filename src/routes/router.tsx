@@ -3,7 +3,7 @@ import App from "../App";
 import ArtistDetailPage from "../pages/artistDetailPage";
 import ArtistListPage from "../pages/artistListPage";
 import ArtistMainPage from "../pages/artistMainPage";
-import SongDetailPage from "../pages/songDetailPage";
+import SongDetailsPage from "../pages/SongDetailsPage";
 import SongListPage from "../pages/songListPage";
 import SongMainPage from "../pages/songMainPage";
 

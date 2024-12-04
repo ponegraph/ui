@@ -58,14 +58,17 @@ const ArtistListPage: React.FC = () => {
 
         {artists && artists.length > 0 && !error ? (
           <div className="flex justify-center gap-8 w-full px-8 flex-wrap">
-          {artists.map((artist, index) => (
-            <ArtistUnit key={index} artistName={artist.artistName} artistId={artist.artistId} />
-          ))}
-        </div>
+            {artists.map((artist, index) => (
+              <ArtistUnit
+                key={index}
+                artistName={artist.artistName}
+                artistId={artist.artistId}
+              />
+            ))}
+          </div>
         ) : (
           <p>No results found.</p>
         )}
-
       </div>
     </div>
   );

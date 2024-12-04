@@ -13,7 +13,12 @@ export const useFetch = <T>(url: string): FetchState<T> => {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            "ngrok-skip-browser-warning": "39028",
+          }
+        });
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
