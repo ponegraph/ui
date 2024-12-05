@@ -17,6 +17,7 @@ const SongDetailsPage: React.FC = () => {
   if (loading) return <SongDetailsLoading />;
   if (error) return <div className="mt-10 text-center">Error: {error}</div>;
   const { song, artists, recommendedSongs } = data!.data;
+  console.log(data);
 
   return (
     <div className="min-h-screen text-white bg-black">
@@ -31,13 +32,19 @@ const SongDetailsPage: React.FC = () => {
             <div className="mt-2 space-y-1 text-lg">
               <div className="flex flex-wrap items-center">
                 {artists.map((artist, index) => (
-                  <span key={artist.artistId} className="mr-2">
-                    <Link
-                      to={`/artists/id/${artist.artistId}`}
-                      className="text-2xl font-semibold underline"
-                    >
-                      {artist.artistName}
-                    </Link>
+                  <span key={index} className="mr-2">
+                    {artist.artistId && artist.mbUrl ? (
+                      <Link
+                        to={`/artists/id/${artist.artistId}`}
+                        className="text-2xl font-semibold underline"
+                      >
+                        {artist.artistName}
+                      </Link>
+                    ) : (
+                      <span className="text-2xl font-semibold">
+                        {artist.artistName}
+                      </span>
+                    )}
                     {index < artists.length - 1 && <span>,</span>}
                   </span>
                 ))}
