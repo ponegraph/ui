@@ -48,7 +48,7 @@ const ArtistListPage: React.FC = () => {
     <div className="bg-black text-white min-h-screen w-full">
       <div className="flex flex-col items-center w-full p-4">
         <div className="flex p-4 w-1/3 justify-self-center mb-4">
-          <BackButton to={"/artists"} />
+          <BackButton to={"/songs"} />
           <SearchBar
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
