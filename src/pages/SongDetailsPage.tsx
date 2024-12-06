@@ -128,19 +128,27 @@ const SongDetailsPage: React.FC = () => {
           <div className="space-y-4 text-lg font-semibold">
             <div className="flex justify-between">
               <span>Spotify</span>
-              <span>#{song.spotifyChart}</span>
+              <span>
+                {song.spotifyChart > 0 ? `#${song.spotifyChart}` : "Not Ranked"}
+              </span>
             </div>
             <div className="flex justify-between">
               <span>Apple Music</span>
-              <span>#{song.appleChart}</span>
+              <span>
+                {song.appleChart > 0 ? `#${song.appleChart}` : "Not Ranked"}
+              </span>
             </div>
             <div className="flex justify-between">
               <span>Deezer</span>
-              <span>#{song.deezerChart}</span>
+              <span>
+                {song.deezerChart > 0 ? `#${song.deezerChart}` : "Not Ranked"}
+              </span>
             </div>
             <div className="flex justify-between">
               <span>Shazam</span>
-              <span>#{song.shazamChart}</span>
+              <span>
+                {song.shazamChart > 0 ? `#${song.shazamChart}` : "Not Ranked"}
+              </span>
             </div>
           </div>
         </div>
